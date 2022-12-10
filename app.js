@@ -1,5 +1,6 @@
 const express = require("express");
 const app = express();
+const bodyParser = require("body-parser");
 
 const Handlebars = require("express-handlebars");
 
@@ -7,6 +8,7 @@ require("./config");
 
 app.use(express.static("public"));
 // Parse request body as JSON
+
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
