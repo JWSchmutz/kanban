@@ -3,8 +3,8 @@
     <div class="col-sm-9">Kanban</div>
     <div class="col-sm-3">
       <ul>
-        <li><button type="button" class="btn btn-info">All</button></li>
-        <li><button type="button" class="btn btn-info">Carson's</button></li>
+        <li><button id="jeremiah" type="button" class="btn btn-info">All</button></li>
+        <li><button onclick="filterSelection('jeremiah')" type="button" class="btn btn-info">Carson's</button></li>
         <li><button type="button" class="btn btn-info">Jeremiah's</button></li>
       </ul>
     </div>
@@ -12,13 +12,13 @@
 </nav>
 <div class="container">
   <div class="row kanban-board">
-    <div style="position:relative;" class="col sm-4">
-      <div>To Do</div>
-      <div id="to-do">{{> card}}</div>
+    <div ondrop="drop(event)" class="col sm-4">
+      <div ondragover="allowDrop(event)">To Do</div>
+      <div ondragstart="dragStart(event)" ondragend="dragEnd(event)" draggable="true" id="to-do drag-target">{{> card}}</div>
       <div>{{> addTask}}</div>
     </div>
-    <div class="col sm-4">Working</div>
-    <div class="col sm-4">Finished</div>
+    <div ondrop="drop(event)" ondragover="allowDrop(event)" class="col sm-4 droptarget">Working</div>
+    <div ondrop="drop(event)" ondragover="allowDrop(event)" class="col sm-4 droptarget">Finished</div>
   </div>
 </div>
 
