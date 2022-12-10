@@ -26,7 +26,8 @@ document.getElementById("create-task-button").addEventListener("click", () => {
     }),
   })
     .then(function (data) {
-      console.log("Request success: ", data);
+      console.log(data.body);
+      location.reload();
     })
     .catch(function (error) {
       console.log("Request failure: ", error);
@@ -35,19 +36,36 @@ document.getElementById("create-task-button").addEventListener("click", () => {
 
 function dragStart(event) {
   event.dataTransfer.setData("Text", event.target.id);
-  document.getElementById("demo").innerHTML = "Started to drag the p element";
 }
 
-function dragEnd(event) {
-  document.getElementById("demo").innerHTML = "Finished dragging the p element.";
-}
+function dragEnd(event) {}
 
 function allowDrop(event) {
   event.preventDefault();
 }
 
 function drop(event) {
+  console.log(event.target.textContent);
+
   event.preventDefault();
   var data = event.dataTransfer.getData("Text");
   event.target.appendChild(document.getElementById(data));
+  console.log(data);
+
+  fetch("/tasks/status", {
+    method: "PUT",
+    headers: myHeaders,
+    mode: "cors",
+    cache: "default",
+    body: JSON.stringify({
+      name: document.getElementById(data).getAttribute("data-name"),
+      status: event.target.textContent,
+    }),
+  })
+    .then(function (data) {
+      console.log(data.body);
+    })
+    .catch(function (error) {
+      console.log("Request failure: ", error);
+    });
 }
