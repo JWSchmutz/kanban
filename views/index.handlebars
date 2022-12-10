@@ -14,7 +14,7 @@
   <div class="row kanban-board">
     <div ondrop="drop(event)" class="col sm-4">
       <div ondragover="allowDrop(event)">To Do</div>
-      <div ondragstart="dragStart(event)" ondragend="dragEnd(event)" draggable="true" id="to-do drag-target">{{> card}}</div>
+      {{> card}}
       <div>{{> addTask}}</div>
     </div>
     <div ondrop="drop(event)" ondragover="allowDrop(event)" class="col sm-4 droptarget">Working</div>
@@ -22,9 +22,6 @@
   </div>
 </div>
 
-      {{#each tasks}}
-        <p>{{this.name}}</p>
-      {{/each}}
 
 <!-- Modal -->
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
