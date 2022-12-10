@@ -7,10 +7,12 @@ router.get("/", (req, res) => {
 });
 
 router.post("/tasks", async (req, res) => {
+  console.log("req.body", req.body);
   // send us to the next get function instead.
   const doc = await Task.create({
     name: req.body.name,
     asignee: req.body.asignee,
+    status: "to do",
   });
   res.send({ result: doc, status: "success" });
 });

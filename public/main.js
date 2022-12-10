@@ -7,12 +7,15 @@ function addTask() {
   //   document.getElementById("to-do").append(taskDiv);
 }
 
+var myHeaders = new Headers();
+myHeaders.append("Content-Type", "application/json");
+
 document.getElementById("create-task-button").addEventListener("click", () => {
   fetch("/tasks", {
     method: "POST",
-    // headers: {
-    //   'auth': '1234'
-    // },
+    headers: myHeaders,
+    mode: "cors",
+    cache: "default",
     body: JSON.stringify({
       name: document.getElementById("task-name").value,
       asignee: document.getElementById("assign-name").value,
