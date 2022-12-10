@@ -3,6 +3,10 @@ li{
     list-style: none;
 }
 
+.center{
+    align-content:center;
+}
+
 .kanban-board{
     text-align: center;
     background-color: lightgrey;
@@ -23,3 +27,4 @@ li{
 #new-task{
     padding-bottom:40px;
 }
+

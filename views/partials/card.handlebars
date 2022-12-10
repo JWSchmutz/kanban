@@ -1,7 +1,13 @@
-<div style="position:relative;" class="card" style="width: 18rem;">
-  <div class="card-body">
-    <h5 class="card-title">Card Name</h5>
-    <p class="card-text">Assigned by: Jere</p>
-    <a href="#" class="btn btn-primary">View Notes</a>
+{{#each tasks}}
+  <div ondragstart="dragStart(event)" ondragend="dragEnd(event)" draggable="true" id="drag-target-{{@index}}">
+    <div id="dragParent" class="card center">
+      <div class="card-body">
+        <h5 class="card-title">
+          <p>{{this.name}}</p>
+        </h5>
+        <p id="assigned-to" class="card-text">{{this.assignee}}</p>
+        <a href="#" class="btn btn-primary">View Notes</a>
+      </div>
+    </div>
   </div>
-</div>
+{{/each}}
