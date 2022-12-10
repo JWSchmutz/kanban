@@ -4,7 +4,11 @@ const Task = require("../models/Task");
 router.get("/", async (req, res) => {
   const tasks = await Task.find({});
   hbsObj = {
-    tasks: tasks.map((task) => ({ name: task.name, assignee: task.assignee })),
+    tasks: tasks.map((task) => ({
+      name: task.name,
+      assignee: task.assignee,
+      status: task.status,
+    })),
   };
   console.log("tasks", hbsObj);
   // send us to the next get function instead.
