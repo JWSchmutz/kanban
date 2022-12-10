@@ -1,0 +1,22 @@
+li{
+    display: inline;
+    list-style: none;
+}
+
+.kanban-board{
+    text-align: center;
+    background-color: lightgrey;
+    border-radius: 10px;
+}
+.kanban-board > .col{
+    border: 2px solid;
+    border-color: black;
+}
+.kanban-board > .col:first-child{
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+}
+.kanban-board > .col:last-child{
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
