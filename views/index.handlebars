@@ -3,22 +3,40 @@
     <div class="col-sm-9">Kanban</div>
     <div class="col-sm-3">
       <ul>
-        <li><button id="jeremiah" type="button" class="btn btn-info">All</button></li>
-        <li><button onclick="filterSelection('jeremiah')" type="button" class="btn btn-info">Carson's</button></li>
-        <li><button type="button" class="btn btn-info">Jeremiah's</button></li>
+        <li><a href="/" id="jeremiah" type="button" class="btn btn-info">All</a></li>
+        <li><a href="/?filter=Carson" onclick="filterSelection('jeremiah')" type="button" class="btn btn-info">Carson's</a></li>
+        <li><a href="/?filter=Jeremiah" type="button" class="btn btn-info">Jeremiah's</a></li>
       </ul>
     </div>
   </div>
 </nav>
 <div class="container">
   <div class="row kanban-board">
-    <div ondrop="drop(event)" class="col sm-4">
-      <div ondragover="allowDrop(event)">To Do</div>
-      {{> card}}
+    <div id="to-do-column" data-name="To Do" ondrop="drop(event, this)" ondragover="allowDrop(event)" class="col sm-4">
+      <h2>To Do</h2>
+        {{#each tasks}}
+          {{#ifEquals this.status "To Do"}}
+           {{> card}}
+          {{/ifEquals}}
+        {{/each}}
       <div>{{> addTask}}</div>
     </div>
-    <div ondrop="drop(event)" ondragover="allowDrop(event)" class="col sm-4 droptarget">Working</div>
-    <div ondrop="drop(event)" ondragover="allowDrop(event)" class="col sm-4 droptarget">Finished</div>
+    <div data-name="Working"  ondragover="allowDrop(event)" ondrop="drop(event, this)" class="col-struct col sm-4">
+      <h2>Working</h2>
+      {{#each tasks}}
+        {{#ifEquals this.status "Working"}}
+          {{> card}}
+        {{/ifEquals}}
+      {{/each}}
+    </div>
+    <div data-name="Finished"  ondragover="allowDrop(event)" ondrop="drop(event, this)" class="col-struct col sm-4">
+      <h2>Finished</h2>
+      {{#each tasks}}
+        {{#ifEquals this.status "Finished"}}
+          {{> card}}
+        {{/ifEquals}}
+      {{/each}}
+    </div>
   </div>
 </div>
 
@@ -38,7 +56,16 @@
         </div>
          <div class="input-group input-group-sm mb-3">
           <label style="padding-right:10px"for="assign-name">Assignee: </label>
-          <input id="assign-name" type="text" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm">
+          <div class="input-group mb-3">
+  <div class="input-group-prepend">
+    <label class="input-group-text" for="inputGroupSelect01">Options</label>
+  </div>
+  <select class="custom-select" id="inputGroupSelect01">
+    <option selected>Choose...</option>
+    <option value="Jeremiah">Jeremiah</option>
+    <option value="Carson">Carson</option>
+  </select>
+</div>
         </div>
       </div>
       <div class="modal-footer">

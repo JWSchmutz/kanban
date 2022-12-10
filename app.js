@@ -11,13 +11,16 @@ app.use(express.static("public"));
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+var hbs = Handlebars.create({
+  helpers: {
+    ifEquals: function (arg1, arg2, options) {
+      return arg1 == arg2 ? options.fn(this) : options.inverse(this);
+    },
+  },
+  defaultLayout: "main",
+});
 
-app.engine(
-  "handlebars",
-  Handlebars.engine({
-    defaultLayout: "main",
-  })
-);
+app.engine("handlebars", hbs.engine);
 app.set("view engine", "handlebars");
 
 const routes = require("./routes");

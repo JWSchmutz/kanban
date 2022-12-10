@@ -22,7 +22,7 @@ document.getElementById("create-task-button").addEventListener("click", () => {
     cache: "default",
     body: JSON.stringify({
       name: document.getElementById("task-name").value,
-      assignee: document.getElementById("assign-name").value,
+      assignee: document.getElementById("inputGroupSelect01").value,
     }),
   })
     .then(function (data) {
@@ -44,13 +44,14 @@ function allowDrop(event) {
   event.preventDefault();
 }
 
-function drop(event) {
+function drop(event, el) {
   console.log(event.target.textContent);
 
   event.preventDefault();
   var data = event.dataTransfer.getData("Text");
-  event.target.appendChild(document.getElementById(data));
+  el.appendChild(document.getElementById(data));
   console.log(data);
+  console.log("name", document.getElementById(data).getAttribute("data-name"), "status", event.target.getAttribute("data-name"));
 
   fetch("/tasks/status", {
     method: "PUT",
@@ -59,7 +60,7 @@ function drop(event) {
     cache: "default",
     body: JSON.stringify({
       name: document.getElementById(data).getAttribute("data-name"),
-      status: event.target.textContent,
+      status: event.target.getAttribute("data-name"),
     }),
   })
     .then(function (data) {

@@ -28,3 +28,23 @@ li{
     padding-bottom:40px;
 }
 
+#to-do-column{
+    padding-bottom: 100px;
+    position: relative;
+}
+
+.col-struct{
+    padding-bottom: 15px;
+}
+
+.add-task{
+    position: absolute;
+    bottom: 5px;
+    right: 20%;
+    left: 20%;
+
+}
+.add-task>.btn{
+    width: 100%;
+
+}
