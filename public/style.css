@@ -1,3 +1,7 @@
+body{
+    background-color: #127475;
+}
+
 li{
     display: inline;
     list-style: none;
@@ -9,7 +13,6 @@ li{
 
 .kanban-board{
     text-align: center;
-    background-color: lightgrey;
     border-radius: 10px;
 }
 .kanban-board > .col{
@@ -29,12 +32,15 @@ li{
 }
 
 #to-do-column{
-    padding-bottom: 100px;
+    padding-bottom: 55px;
     position: relative;
+    background-color: #F5DFBB;
 }
 
 .col-struct{
+    background-color: #F5DFBB;
     padding-bottom: 15px;
+    padding-top: 5px;
 }
 
 .add-task{
