@@ -12,13 +12,31 @@
 </nav>
 <div class="container">
   <div class="row kanban-board">
-    <div ondrop="drop(event)" class="col sm-4">
-      <div ondragover="allowDrop(event)">To Do</div>
-      {{> card}}
-      <div>{{> addTask}}</div>
+    <div data-name="To Do" ondrop="drop(event, this)" ondragover="allowDrop(event)" class="col-struct col sm-4">
+      <h2>To Do</h2>
+        {{#each tasks}}
+          {{#ifEquals this.status "To Do"}}
+           {{> card}}
+          {{/ifEquals}}
+        {{/each}}
+      <div class="no-drop">{{> addTask}}</div>
     </div>
-    <div ondrop="drop(event)" ondragover="allowDrop(event)" class="col sm-4 droptarget">Working</div>
-    <div ondrop="drop(event)" ondragover="allowDrop(event)" class="col sm-4 droptarget">Finished</div>
+    <div data-name="Working"  ondragover="allowDrop(event)" ondrop="drop(event, this)" class="col sm-4">
+      <h2>Working</h2>
+      {{#each tasks}}
+        {{#ifEquals this.status "Working"}}
+          {{> card}}
+        {{/ifEquals}}
+      {{/each}}
+    </div>
+    <div data-name="Finished"  ondragover="allowDrop(event)" ondrop="drop(event, this)" class="col sm-4">
+      <h2>Finished</h2>
+      {{#each tasks}}
+        {{#ifEquals this.status "Finished"}}
+          {{> card}}
+        {{/ifEquals}}
+      {{/each}}
+    </div>
   </div>
 </div>
 
@@ -38,7 +56,16 @@
         </div>
          <div class="input-group input-group-sm mb-3">
           <label style="padding-right:10px"for="assign-name">Assignee: </label>
-          <input id="assign-name" type="text" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm">
+          <div class="input-group mb-3">
+  <div class="input-group-prepend">
+    <label class="input-group-text" for="inputGroupSelect01">Options</label>
+  </div>
+  <select class="custom-select" id="inputGroupSelect01">
+    <option selected>Choose...</option>
+    <option value="Jeremiah">Jeremiah</option>
+    <option value="Carson">Carson</option>
+  </select>
+</div>
         </div>
       </div>
       <div class="modal-footer">
