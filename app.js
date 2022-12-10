@@ -24,8 +24,7 @@ app.set("view engine", "handlebars");
 // app.use(matchupRoutes);
 
 const PORT = process.env.PORT || 5000;
-// db.sequelize.sync().then(function () {
+
 app.listen(PORT, function () {
   console.log("App listening on PORT " + PORT);
-  //   });
 });
