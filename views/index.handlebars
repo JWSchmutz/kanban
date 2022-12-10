@@ -12,16 +12,16 @@
 </nav>
 <div class="container">
   <div class="row kanban-board">
-    <div data-name="To Do" ondrop="drop(event, this)" ondragover="allowDrop(event)" class="col-struct col sm-4">
+    <div id="to-do-column" data-name="To Do" ondrop="drop(event, this)" ondragover="allowDrop(event)" class="col sm-4">
       <h2>To Do</h2>
         {{#each tasks}}
           {{#ifEquals this.status "To Do"}}
            {{> card}}
           {{/ifEquals}}
         {{/each}}
-      <div class="no-drop">{{> addTask}}</div>
+      <div>{{> addTask}}</div>
     </div>
-    <div data-name="Working"  ondragover="allowDrop(event)" ondrop="drop(event, this)" class="col sm-4">
+    <div data-name="Working"  ondragover="allowDrop(event)" ondrop="drop(event, this)" class="col-struct col sm-4">
       <h2>Working</h2>
       {{#each tasks}}
         {{#ifEquals this.status "Working"}}
@@ -29,7 +29,7 @@
         {{/ifEquals}}
       {{/each}}
     </div>
-    <div data-name="Finished"  ondragover="allowDrop(event)" ondrop="drop(event, this)" class="col sm-4">
+    <div data-name="Finished"  ondragover="allowDrop(event)" ondrop="drop(event, this)" class="col-struct col sm-4">
       <h2>Finished</h2>
       {{#each tasks}}
         {{#ifEquals this.status "Finished"}}
