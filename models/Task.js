@@ -10,12 +10,10 @@ const TaskSchema = new Schema({
   asignee: {
     type: String,
     trim: true,
-    unique: true,
   },
   status: {
     type: String,
     trim: true,
-    unique: true,
   },
 });
 
