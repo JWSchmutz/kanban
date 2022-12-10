@@ -18,10 +18,8 @@ app.engine(
 );
 app.set("view engine", "handlebars");
 
-// const cupRoutes = require("./controllers/cupsController");
-// const matchupRoutes = require("./controllers/matchupsController");
-// app.use(cupRoutes);
-// app.use(matchupRoutes);
+const routes = require("./routes");
+app.use(routes);
 
 const PORT = process.env.PORT || 5000;
 
