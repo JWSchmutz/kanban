@@ -11,16 +11,18 @@ function addTask() {
 //     const element= document.getElementById("assigned-to");
 //     element.classList.add("jeremiah")
 // })
+var myHeaders = new Headers();
+myHeaders.append("Content-Type", "application/json");
 
 document.getElementById("create-task-button").addEventListener("click", () => {
   fetch("/tasks", {
     method: "POST",
-    // headers: {
-    //   'auth': '1234'
-    // },
+    headers: myHeaders,
+    mode: "cors",
+    cache: "default",
     body: JSON.stringify({
       name: document.getElementById("task-name").value,
-      asignee: document.getElementById("assign-name").value,
+      assignee: document.getElementById("assign-name").value,
     }),
   })
     .then(function (data) {

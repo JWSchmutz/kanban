@@ -22,6 +22,10 @@
   </div>
 </div>
 
+      {{#each tasks}}
+        <p>{{this.name}}</p>
+      {{/each}}
+
 <!-- Modal -->
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
@@ -40,8 +44,6 @@
           <input id="assign-name" type="text" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm">
         </div>
       </div>
-      
-
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
         <button id="create-task-button"type="button" class="btn btn-primary">Save changes</button>
