@@ -3,7 +3,7 @@ const app = express();
 
 const Handlebars = require("express-handlebars");
 
-// const db = require("./models");
+const db = require("./models/Task");
 
 app.use(express.static("public"));
 // Parse request body as JSON
@@ -24,8 +24,7 @@ app.set("view engine", "handlebars");
 // app.use(matchupRoutes);
 
 const PORT = process.env.PORT || 5000;
-// db.sequelize.sync().then(function () {
-  app.listen(PORT, function () {
-    console.log("App listening on PORT " + PORT);
-  // });
+
+app.listen(PORT, function () {
+  console.log("App listening on PORT " + PORT);
 });
