@@ -18,7 +18,7 @@ document.getElementById("create-task-button").addEventListener("click", () => {
     cache: "default",
     body: JSON.stringify({
       name: document.getElementById("task-name").value,
-      asignee: document.getElementById("assign-name").value,
+      assignee: document.getElementById("assign-name").value,
     }),
   })
     .then(function (data) {

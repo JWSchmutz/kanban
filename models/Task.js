@@ -7,7 +7,7 @@ const TaskSchema = new Schema({
     trim: true,
     unique: true,
   },
-  asignee: {
+  assignee: {
     type: String,
     trim: true,
   },
