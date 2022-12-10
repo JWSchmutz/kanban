@@ -3,7 +3,7 @@ const app = express();
 
 const Handlebars = require("express-handlebars");
 
-const db = require("./models/Task");
+require("./config");
 
 app.use(express.static("public"));
 // Parse request body as JSON
