@@ -17,9 +17,18 @@ router.post("/tasks", async (req, res) => {
   const doc = await Task.create({
     name: req.body.name,
     assignee: req.body.assignee,
-    status: "to do",
+    status: "To Do",
   });
   res.send({ result: doc, status: "success" });
+});
+
+router.put("/tasks/status", async (req, res) => {
+  console.log("req.body", req.body);
+  // send us to the next get function instead.
+  const docToUpdate = await Task.findOne({ name: req.body.name });
+  docToUpdate.status = req.body.status;
+  docToUpdate.save();
+  res.send({ result: docToUpdate, status: "success" });
 });
 
 module.exports = router;
